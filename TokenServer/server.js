@@ -17,7 +17,7 @@ app.post('/api/postTelemetry', (req, res) => {
             'Content-Type': 'application/json',
             'Accept' : 'application/json'
         };
-        let data = {"username":"sergio.rubio@comsa.com","password":"14647.Ser.gAR@"}
+        let data = {"username":process.env.TBUSER,"password":process.env.TBPASS,}
         return axios.post(url, data, { headers }).then(response => {
             response.data.token
             url = 'https://iot.cserintranet.com/api/plugins/telemetry/ASSET/' + req.body.spaceId + '/timeseries/ANY';
@@ -31,10 +31,10 @@ app.post('/api/postTelemetry', (req, res) => {
                 console.log('Response:', response);
                 res.send('Data correctly saved!');
             }).catch(error => {
-                console.error('Error:', error.response.data);
+                console.error('ErrorTELE:', error.response.data);
             });
         }).catch(error => {
-            console.error('Error:', error.response);
+            console.error('ErrorCreds:', error.response);
             res.send(error.response);
         });
       } catch (err) {
