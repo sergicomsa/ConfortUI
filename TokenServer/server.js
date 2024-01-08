@@ -19,7 +19,6 @@ app.post('/api/postTelemetry', (req, res) => {
         };
         let data = {"username":process.env.TBUSER,"password":process.env.TBPASS,}
         return axios.post(url, data, { headers }).then(response => {
-            response.data.token
             url = 'https://iot.cserintranet.com/api/plugins/telemetry/ASSET/' + req.body.spaceId + '/timeseries/ANY';
             headers = {
                 'Content-Type': 'application/json',
@@ -38,8 +37,8 @@ app.post('/api/postTelemetry', (req, res) => {
             res.send(error.response);
         });
       } catch (err) {
-        console.error('Error reading file:', err);
-        res.status(500).send('Error reading to file');
+        console.error('Error reading env:', err);
+        res.status(500).send('Error reading env creds');
       }
 });
 
