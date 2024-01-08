@@ -12,6 +12,8 @@ services:
       context: ./TokenServer
       dockerfile: Dockerfile
     container_name: token_server
+    env_file:
+      - CREDS.env
   nginx:
     image: nginx:stable-alpine-slim
     container_name: nginxv2

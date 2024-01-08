@@ -12,9 +12,6 @@ RUN npm install
 # Copy the rest of your app's source code to the container
 COPY . .
 
-ENV TBUSER='sergio.rubio@comsa.com'
-ENV TBPASS='14647.Ser.gAR@'
-
 EXPOSE 4000
 
 CMD ["node", "server.js"]
